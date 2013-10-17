@@ -395,6 +395,34 @@
             </releases>
         </repository>
         <repository>
+            <id>jboss-enterprise-repository-group</id>
+            <name>JBoss Enterprise Maven Repository Group</name>
+            <url>http://maven.repository.redhat.com/earlyaccess/all/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository>
             <id>Apache Releases</id>
             <url>http://repo1.maven.org/maven2</url>
         </repository>
@@ -416,6 +444,30 @@
         <pluginRepository>
             <id>Apache Snapshot</id>
             <url>http://repository.apache.org/snapshots/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jboss-enterprise-repository-group</id>
+            <name>JBoss Enterprise Maven Repository Group</name>
+            <url>http://maven.repository.redhat.com/earlyaccess/all/</url>
+            <layout>default</layout>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Maven Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
         </pluginRepository>
     </pluginRepositories>
 

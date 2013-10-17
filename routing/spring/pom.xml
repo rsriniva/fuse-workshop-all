@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>routing</artifactId>
+        <groupId>org.fusesource.workshop</groupId>
+        <version>1.0</version>
+    </parent>
+
+    <name>FuseSource Workshop :: Camel with Spring</name>
+    <artifactId>spring</artifactId>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <osgi-import-package>
+            org.fusesource.poc.routes;version="1.0",
+            org.fusesource.poc.pojo;version="1.0",
+            org.fusesource.workshop.service;version="1.0",
+            META-INF.cxf,
+            META-INF.cxf.osgi,
+            org.apache.camel;version="[2.4,3.0)",
+            org.apache.camel.builder;version="[2.4,3.0)",
+            org.apache.camel.model;version="[2.4,3.0)",
+            org.apache.camel.impl;version="[2.4,3.0)",
+            org.apache.camel.spi;version="[2.4,3.0)",
+            org.apache.activemq.camel.component;version="[5.4,6.0)",
+            org.apache.camel.processor;version="[2.4,3.0)",
+            *
+        </osgi-import-package>
+        <osgi-dynamic-package>
+            org.apache.cxf.*,
+            org.springframework.beans.*
+        </osgi-dynamic-package>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.fusesource.workshop</groupId>
+            <artifactId>camel</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!-- Camel -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jaxb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jms</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-stream</artifactId>
+        </dependency>
+
+        <!--  ActiveMQ -->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-pool</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-camel</artifactId>
+        </dependency>
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <!-- logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+
+        <!-- Other -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-http</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty-maven-plugin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Run Camel in standalone using maven camel plugin
+                 Blueprint / camel-context.xml file is used here -->
+            <plugin>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-maven-plugin</artifactId>
+                <version>${camel.version}</version>
+                <configuration>
+                    <applicationContextUri>spring/camel-context.xml;spring/activemq-config.xml</applicationContextUri>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+
+</project>

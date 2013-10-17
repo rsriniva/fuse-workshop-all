@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.fusesource.workshop</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0</version>
+        <relativePath>../parent/pom.xml</relativePath>
+    </parent>
+
+    <name>FuseSource Workshop :: Routing</name>
+    <artifactId>routing</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>camel</module>
+        <module>blueprint</module>
+        <module>spring</module>
+        <module>web</module>
+        <module>cdi</module>
+        <module>switchyard</module>
+    </modules>
+
+
+</project>

@@ -13,6 +13,20 @@
     <artifactId>switchyard</artifactId>
 
     <dependencies>
+        <!-- Camel
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cdi</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        -->
+
+        <!-- Switchyard -->
         <dependency>
             <groupId>org.switchyard</groupId>
             <artifactId>switchyard-api</artifactId>

@@ -27,7 +27,7 @@
                    serviceClass="org.fusesource.workshop.service.Documents"/>
 
   <!-- Pojo -->
-  <bean id="aBean" class="org.fusesource.poc.testing.MyProcessor"/>
+  <bean id="aBean" class="org.fusesource.workshop.spring.MyProcessor"/>
 
   <camelContext xmlns="http://camel.apache.org/schema/spring">
 

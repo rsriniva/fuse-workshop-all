@@ -21,8 +21,7 @@
         <module>spring</module>
         <module>web</module>
         <module>cdi</module>
-        <module>switchyard</module>
+        <!--<module>switchyard</module> -->
     </modules>
-
 
 </project>

@@ -145,13 +145,13 @@
     <build>
         <plugins>
             <!-- Run Camel in standalone using maven camel plugin
-                 Blueprint / camel-context.xml file is used here -->
+                 Spring / camel-osgi.xml file is used here -->
             <plugin>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-maven-plugin</artifactId>
                 <version>${camel.version}</version>
                 <configuration>
-                    <applicationContextUri>spring/camel-context.xml;spring/activemq-config.xml</applicationContextUri>
+                    <applicationContextUri>camel-context.xml;activemq-config.xml</applicationContextUri>
                 </configuration>
             </plugin>
 

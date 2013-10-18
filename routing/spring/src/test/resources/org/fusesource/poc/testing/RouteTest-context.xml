@@ -26,7 +26,7 @@
                    address="http://localhost:9090/cxf/service"
                    serviceClass="org.fusesource.workshop.service.Documents"/>
 
-  <!-- pojos -->
+  <!-- Pojo -->
   <bean id="aBean" class="org.fusesource.poc.testing.MyProcessor"/>
 
   <camelContext xmlns="http://camel.apache.org/schema/spring">

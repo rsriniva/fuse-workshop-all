@@ -16,22 +16,18 @@
         <dependency>
             <groupId>org.switchyard</groupId>
             <artifactId>switchyard-api</artifactId>
-            <version></version>
         </dependency>
         <dependency>
             <groupId>org.switchyard</groupId>
             <artifactId>switchyard-plugin</artifactId>
-            <version></version>
         </dependency>
         <dependency>
             <groupId>org.switchyard.components</groupId>
             <artifactId>switchyard-component-camel-jms</artifactId>
-            <version></version>
         </dependency>
         <dependency>
             <groupId>org.switchyard.components</groupId>
             <artifactId>switchyard-component-bean</artifactId>
-            <version></version>
         </dependency>
         <dependency>
             <groupId>javax.jms</groupId>

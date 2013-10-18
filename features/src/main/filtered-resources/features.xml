@@ -3,6 +3,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0 ">
 
+    <!-- Should be added with last distro of JBoss Fuse 6.1 - could be removed -->
     <repository>mvn:org.apache.karaf.assemblies.features/spring/2.3.0.redhat-610114/xml/features</repository>
 
     <feature name="resources" version="1.0">
@@ -13,6 +14,8 @@
         <feature version="[2.10,3)">camel</feature>
         <feature version="[2.10,3)">camel-cxf</feature>
         <feature version="[2.10,3)">camel-jaxb</feature>
+        <feature version="[5.8,6.0)">activemq-client</feature>
+        <feature version="[5.8,6.0)">activemq-broker</feature>
         <feature version="[5.8,6.0)">activemq-camel</feature>
     </feature>
 

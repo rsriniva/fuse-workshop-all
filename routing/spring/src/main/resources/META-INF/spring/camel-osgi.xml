@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xmlns:ctx="http://www.springframework.org/schema/context"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+	       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/osgi
+           http://www.springframework.org/schema/osgi/spring-osgi.xsd
+       http://www.springframework.org/schema/osgi-compendium
+           http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
+       http://camel.apache.org/schema/spring
+           http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://camel.apache.org/schema/cxf
+           http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+
+    <!-- OSGI Config Admin -->
+    <osgix:cm-properties id="parameters" persistent-id="parameters"/>
+
+    <!-- OSGI Placeholder configurer -->
+    <ctx:property-placeholder properties-ref="parameters" />
+
+    <!-- ActiveMQ Component configured to use ConnectionFactory & Pool exposed as OSGI service by JBoss Fuse-->
+    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="connectionFactory">
+            <osgi:reference interface="javax.jms.ConnectionFactory" filter="(name=amq-pool)"/>
+        </property>
+    </bean>
+
+    <!-- POJO/Services -->
+    <bean id="feedbackBean" class="org.fusesource.poc.pojo.Feedback"/>
+
+    <!-- WebServices -->
+    <cxf:cxfEndpoint id="wsService"
+                     address="http://localhost:9090/cxf/service"
+                     serviceClass="org.fusesource.workshop.service.Documents"
+                     loggingFeatureEnabled="true"/>
+
+    <camelContext trace="false" xmlns="http://camel.apache.org/schema/spring">
+
+        <package>org.fusesource.poc.routes</package>
+
+        <endpoint id="fileUri" uri="${fileUri}"/>
+        <endpoint id="activeMqQueueUri" uri="${activeMqQueueUri}"/>
+        <endpoint id="activeMqWSQueueUri" uri="${activeMqWSQueueUri}"/>
+        <endpoint id="cxfUri" uri="${cxfUri}"/>
+
+    </camelContext>
+
+
+</beans>

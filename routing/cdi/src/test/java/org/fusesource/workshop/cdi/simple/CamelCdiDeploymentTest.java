@@ -1,4 +1,4 @@
-package org.fusesource.workshop.cdi;
+package org.fusesource.workshop.cdi.simple;
 
 import static org.junit.Assert.assertEquals;
 

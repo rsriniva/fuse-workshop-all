@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cdi</artifactId>
-    <name>FuseSource Workshop :: Camel &amp; CDI</name>
+    <artifactId>cdi-cxf</artifactId>
+    <name>FuseSource Workshop :: Camel &amp; CDI - CXF</name>
     <packaging>war</packaging>
 
     <dependencies>
@@ -36,8 +36,22 @@
             <artifactId>camel-cdi</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jms</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-camel</artifactId>
+        </dependency>
+
+        <!-- CXF -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
         </dependency>
 
         <!-- JEE -->

@@ -1,4 +1,4 @@
-package org.fusesource.workshop.cdi;
+package org.fusesource.workshop.cdi.simple;
 
 import javax.inject.Inject;
 
@@ -17,11 +17,11 @@ public class SimpleCamelRoute extends RouteBuilder {
     public void configure() throws Exception {
 
         from("timer:foo?period=10s")
-           .setBody(constant("Charles"))
-            .to("direct:serviceCall");
+          .setBody(constant("Charles"))
+          .to("direct:serviceCall");
 
         from("direct:serviceCall")
-                .bean(service);
+          .bean(service);
 
     }
 

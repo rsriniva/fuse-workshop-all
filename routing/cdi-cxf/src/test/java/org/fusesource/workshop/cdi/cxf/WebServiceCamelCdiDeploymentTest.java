@@ -1,12 +1,10 @@
-package org.fusesource.workshop.cdi;
+package org.fusesource.workshop.cdi.cxf;
 
-import org.fusesource.poc.routes.WebServiceToPojoUsingQueue;
 import org.fusesource.workshop.service.DocumentId;
 import org.fusesource.workshop.service.DocumentResponse;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.cdi.Uri;
 import org.apache.camel.cdi.internal.CamelExtension;
-import org.fusesource.workshop.cdi.beans.Service;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -38,9 +36,9 @@ public class WebServiceCamelCdiDeploymentTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(CamelExtension.class.getPackage())
-                .addPackage(WebServiceRouting.class.getPackage())
-                .addPackage(WebServiceToPojoUsingQueue.class.getPackage())
-                .addPackage(Service.class.getPackage())
+                //.addPackage(RouteFactory.class.getPackage())
+                .addPackage(BeanFactory.class.getPackage())
+                .addPackage(DocumentId.class.getPackage())
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "ejb-jar.xml");
     }

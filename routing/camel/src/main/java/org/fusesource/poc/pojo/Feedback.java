@@ -6,6 +6,8 @@ import org.apache.camel.Body;
 
 public class Feedback {
 
+    public Feedback() {}
+
     public DocumentId createRequest(@Body String id) {
 
         DocumentId request = new DocumentId();

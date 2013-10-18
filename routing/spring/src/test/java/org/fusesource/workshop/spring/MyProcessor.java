@@ -1,4 +1,4 @@
-package org.fusesource.poc.testing;
+package org.fusesource.workshop.spring;
 
 import org.fusesource.workshop.service.DocumentResponse;
 import org.apache.camel.Exchange;

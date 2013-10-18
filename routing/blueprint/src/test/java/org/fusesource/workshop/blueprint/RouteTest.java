@@ -1,19 +1,22 @@
-package org.fusesource.poc.testing;
+package org.fusesource.workshop.blueprint;
 
-import org.apache.camel.*;
+import org.apache.camel.EndpointInject;
+import org.apache.camel.Produce;
+import org.apache.camel.ProducerTemplate;
 import org.apache.camel.component.mock.MockEndpoint;
-
+import org.apache.camel.test.blueprint.CamelBlueprintTestSupport;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
-@ContextConfiguration
-public class RouteTest extends AbstractJUnit4SpringContextTests {
+public class RouteTest extends CamelBlueprintTestSupport {
 
-    @Autowired
-    protected CamelContext camelContext;
+    public RouteTest() {
+        System.setProperty(SPROP_CAMEL_CONTEXT_CREATION_TIMEOUT,"60000");
+    }
+
+    @Override
+    protected String getBlueprintDescriptor() {
+        return "OSGI-INF/blueprint/camel-context.xml";
+    }
 
     @EndpointInject(uri = "mock:result")
     public MockEndpoint result;
@@ -22,19 +25,11 @@ public class RouteTest extends AbstractJUnit4SpringContextTests {
     private ProducerTemplate template;
 
     @Test
-    public void testMocksAreValid() throws Exception {
-        MockEndpoint.assertIsSatisfied(camelContext);
-    }
-
-    @Test
-    @DirtiesContext
     public void testWebService() throws Exception {
-
         result.expectedBodiesReceived(response);
         template.sendBody(payload);
 
         result.assertIsSatisfied();
-
     }
 
     private final static String payload = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ser=\"http://service.workshop.fusesource.org\">\n" +

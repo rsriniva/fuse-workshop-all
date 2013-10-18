@@ -3,28 +3,26 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0 ">
 
-    <!-- Should be added with last distro of JBoss Fuse 6.1 - could be removed -->
-    <repository>mvn:org.apache.karaf.assemblies.features/spring/2.3.0.redhat-610114/xml/features</repository>
+    <feature name="libs" version="1.0">
+        <feature version="[3.0,4.0)">spring</feature>
+        <feature version="[1.2,2.0)">spring-dm</feature>
+        <feature version="[2.10,3)">camel</feature>
+        <feature version="[2.10,3)">camel-cxf</feature>
+        <feature version="[2.10,3)">camel-jaxb</feature>
+        <feature version="[5.8,6.0)">activemq-client</feature>
+        <feature version="[6.1,7.0)">mq-fabric</feature>
+        <feature version="[5.8,6.0)">activemq-broker-noweb</feature>
+        <feature version="[5.8,6.0)">activemq-camel</feature>
+    </feature>
 
     <feature name="resources" version="1.0">
         <bundle>mvn:org.fusesource.workshop/resources/1.0</bundle>
     </feature>
 
-    <feature name="libs" version="1.0">
-        <feature version="[2.10,3)">camel</feature>
-        <feature version="[2.10,3)">camel-cxf</feature>
-        <feature version="[2.10,3)">camel-jaxb</feature>
-        <feature version="[5.8,6.0)">activemq-client</feature>
-        <feature version="[5.8,6.0)">activemq-broker</feature>
-        <feature version="[5.8,6.0)">activemq-camel</feature>
-    </feature>
-
     <feature name="fuseworkshop-common" version="1.0">
         <feature>resources</feature>
         <feature>libs</feature>
-
         <configfile finalname="/etc/parameters.cfg">mvn:org.fusesource.workshop/features/1.0/cfg/parameters</configfile>
-
         <bundle>mvn:org.fusesource.workshop/web-service/1.0</bundle>
         <bundle>mvn:org.fusesource.workshop/camel/1.0</bundle>
     </feature>

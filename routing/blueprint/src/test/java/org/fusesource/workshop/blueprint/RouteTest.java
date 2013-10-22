@@ -9,10 +9,6 @@ import org.junit.Test;
 
 public class RouteTest extends CamelBlueprintTestSupport {
 
-    public RouteTest() {
-        System.setProperty(SPROP_CAMEL_CONTEXT_CREATION_TIMEOUT,"60000");
-    }
-
     @Override
     protected String getBlueprintDescriptor() {
         return "OSGI-INF/blueprint/camel-context.xml";

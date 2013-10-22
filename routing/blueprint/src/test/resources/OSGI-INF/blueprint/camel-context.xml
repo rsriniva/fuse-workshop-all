@@ -11,21 +11,14 @@
     <!-- OSGI blueprint property placeholder -->
     <cm:property-placeholder id="parameters" persistent-id="parameters">
         <cm:default-properties>
-            <cm:property name="result" value="mock:result"/>
-            <cm:property name="fileUri" value="file:fusesource/data/"/>
+            <cm:property name="mockResultUri" value="mock:result"/>
+            <cm:property name="directUri" value="direct:start"/>
             <cm:property name="activeMqQueueUri" value="activemq:queue:fusesource-input"/>
             <cm:property name="activeMqWSQueueUri" value="activemq:queue:fusesource-ws?replyTo=wsResponse"/>
             <cm:property name="cxfUri" value="cxf:bean:wsService"/>
             <cm:property name="wsAddressIncident" value="http://localhost:9090/cxf/service"/>
         </cm:default-properties>
     </cm:property-placeholder>
-
-    <!-- ActiveMQ Component configured to use ConnectionFactory & Pool exposed as OSGI service by JBoss Fuse-->
-    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
-        <property name="connectionFactory">
-            <reference interface="javax.jms.ConnectionFactory" filter="name=amq-pool"/>
-        </property>
-    </bean>
 
     <!-- POJO/Services -->
     <bean id="feedbackBean" class="org.fusesource.poc.pojo.Feedback"/>
@@ -36,17 +29,31 @@
                      serviceClass="org.fusesource.workshop.service.Documents"
                      loggingFeatureEnabled="true"/>
 
-    <camelContext trace="false" xmlns="http://camel.apache.org/schema/blueprint">
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint">
 
         <!-- using Camel properties component and refer to the blueprint property placeholder by its id -->
         <propertyPlaceholder id="properties" location="blueprint:parameters"/>
 
-        <package>org.fusesource.poc.routes</package>
-
-        <endpoint id="fileUri" uri="{{fileUri}}"/>
+        <endpoint id="directUri" uri="{{directUri}}"/>
+        <endpoint id="mockResultUri" uri="{{mockResultUri}}"/>
         <endpoint id="activeMqQueueUri" uri="{{activeMqQueueUri}}"/>
         <endpoint id="activeMqWSQueueUri" uri="{{activeMqWSQueueUri}}"/>
         <endpoint id="cxfUri" uri="{{cxfUri}}"/>
+        <endpoint id="wsAddressIncidentUri" uri="{{wsAddressIncident}}"/>
+
+        <route>
+            <from ref="directUri"/>
+            <to ref="wsAddressIncidentUri"/>
+            <log message=">>> Response received : ${body}"/>
+            <to ref="mockResultUri"/>
+        </route>
+
+        <route>
+            <from ref="cxfUri"/>
+            <transform>
+                <method ref="feedbackBean" method="clientReply"/>
+            </transform>
+        </route>
 
     </camelContext>
 

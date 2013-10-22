@@ -31,7 +31,7 @@
 
     <camelContext xmlns="http://camel.apache.org/schema/blueprint">
 
-        <!-- using Camel properties component and refer to the blueprint property placeholder by its id -->
+        <!-- using Camel properties component and refer to the blueprint property placeholder by its id
         <propertyPlaceholder id="properties" location="blueprint:parameters"/>
 
         <endpoint id="directUri" uri="{{directUri}}"/>
@@ -50,6 +50,22 @@
 
         <route>
             <from ref="cxfUri"/>
+            <transform>
+                <method ref="feedbackBean" method="clientReply"/>
+            </transform>
+        </route>
+
+        -->
+
+        <route>
+            <from uri="direct:start"/>
+            <to uri="http://localhost:9090/cxf/service"/>
+            <log message=">>> Response received : ${body}"/>
+            <to uri="mock:result"/>
+        </route>
+
+        <route>
+            <from uri="cxf:bean:wsService"/>
             <transform>
                 <method ref="feedbackBean" method="clientReply"/>
             </transform>

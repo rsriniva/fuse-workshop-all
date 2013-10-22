@@ -25,6 +25,8 @@ public class CxfRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
+        //cxfEndpoint.setCamelContext(getContext());
+
         // From WebService to PoJo
         from(cxfEndpoint)
                 .id("fromWebServiceToQueue")

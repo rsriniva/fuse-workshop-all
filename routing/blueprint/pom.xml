@@ -90,6 +90,7 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-cxf</artifactId>
             <scope>test</scope>
+            <!--
             <exclusions>
                 <exclusion>
                     <artifactId>camel-spring</artifactId>
@@ -124,6 +125,7 @@
                     <groupId>asm</groupId>
                 </exclusion>
             </exclusions>
+            -->
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>

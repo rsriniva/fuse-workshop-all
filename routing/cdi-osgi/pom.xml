@@ -28,7 +28,8 @@
       org.fusesource.workshop.cdi.simple
     </osgi-private-package>
     <osgi-require-capability>
-      osgi.extender; filter:="(osgi.extender=pax.cdi)"
+      osgi.extender; filter:="(osgi.extender=pax.cdi)",
+      org.ops4j.pax.cdi.extension; filter:="(extension=camel-cdi-extension)"
     </osgi-require-capability>
   </properties>
 

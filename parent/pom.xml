@@ -461,6 +461,7 @@
                         <Private-Package>${osgi-private-package}</Private-Package>
                         <Export-Package>${osgi-export-package}</Export-Package>
                         <DynamicImport-Package>${osgi-dynamic-package}</DynamicImport-Package>
+                        <Require-Capability>${osgi-require-capability}</Require-Capability>
                     </instructions>
                 </configuration>
             </plugin>

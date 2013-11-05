@@ -21,6 +21,7 @@
         <module>spring</module>
         <module>web</module>
         <module>cdi</module>
+        <module>cdi-osgi</module>
         <!--
         <module>cdi-cxf</module>
         <module>switchyard</module>
